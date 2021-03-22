@@ -1,4 +1,4 @@
-import {getRandomInt, getRandom} from './util'
+import {getRandomInt, getRandom} from './util.js'
 
 let arr = ['palace', 'flat', 'house', 'bungalow']
 let arrCheckin = ['12:00', '13:00', '14:00'];
