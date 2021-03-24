@@ -72,15 +72,19 @@ mainMarker.on('moveend', (evt) => {
   setAddresValue(evt.target.getLatLng());
 });
 
+let offers = null;
 const addOffersToMap = (data) => {
-  const offers = data
-    .slice()
+  offers = data;
+};
+
+const drawOffers = () => {
+  const filteredOffers = offers.slice()
     .sort(compareOffers)
     .filter(filterOffers)
     .slice(0, OFFERS_TO_RENDER_NUMBER);
-  const offersCards = renderOffers(offers).children;
+  const offersCards = renderOffers(filteredOffers).children;
 
-  offers
+  filteredOffers
     .forEach(({location}, index) => {
       const icon = L.icon({
         iconUrl: './img/pin.svg',
@@ -106,6 +110,6 @@ const addOffersToMap = (data) => {
           },
         );
     });
-};
+}
 
-export { setDefaultCoordinates, addOffersToMap, clearMarkers, setMainPinMarker };
+export { setDefaultCoordinates, drawOffers, addOffersToMap, clearMarkers, setMainPinMarker };

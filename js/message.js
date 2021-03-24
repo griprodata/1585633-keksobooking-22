@@ -11,14 +11,14 @@ const errorPopupTemplate = document.querySelector('#error')
 const errorButtonElement = errorPopupTemplate.querySelector('.error__button');
 
 const onSuccessMessageEscKeydown = (evt) => {
-  if (isEscEvent()) {
+  if (isEscEvent(evt)) {
     evt.preventDefault();
     removeSuccessMessage();
   }
 };
 
 const onErrorMessageEscKeydown = (evt) => {
-  if (isEscEvent()) {
+  if (isEscEvent(evt)) {
     evt.preventDefault();
     removeErrorMessage();
   }

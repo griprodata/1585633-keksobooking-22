@@ -126,22 +126,36 @@ roomNumberInput.addEventListener('change', (evt) => {
   capacityInput.reportValidity();
 });
 
+const RoomsAmount = {
+  ONE: '1',
+  TWO: '2',
+  THREE: '3',
+  HUNDRED: '100',
+};
+
+const GuestsAmount = {
+  NONE: '0',
+  ONE: '1',
+  TWO: '2',
+  THREE: '3',
+};
+
 roomNumberInput.addEventListener('input', (evt) => {
-  if (evt.target.value === '1') {
+  if (evt.target.value === RoomsAmount.ONE) {
     for (let option of options) {
-      option.disabled = (option.value !== '1');
+      option.disabled = (option.value !== GuestsAmount.ONE);
     }
-  } else if (evt.target.value === '2') {
+  } else if (evt.target.value === RoomsAmount.TWO) {
     for (let option of options) {
-      option.disabled = (option.value !== '1' && option.value !== '2');
+      option.disabled = (option.value !== GuestsAmount.ONE && option.value !== GuestsAmount.TWO);
     }
-  } else if (evt.target.value === '3') {
+  } else if (evt.target.value === RoomsAmount.THREE) {
     for (let option of options) {
-      option.disabled = (option.value !== '1' && option.value !== '2' && option.value !== '3');
+      option.disabled = (option.value !== GuestsAmount.ONE && option.value !== GuestsAmount.TWO && option.value !== GuestsAmount.THREE);
     }
-  } else if (evt.target.value === '100') {
+  } else if (evt.target.value === RoomsAmount.HUNDRED) {
     for (let option of options) {
-      option.disabled = (option.value !== '0');
+      option.disabled = (option.value !== GuestsAmount.NONE);
     }
   }
 });
@@ -159,8 +173,8 @@ const setAdFormSubmit = (onSuccess) => {
   });
 };
 
-const setAdFormReset = (resetForm) => {
-  adForm.addEventListener('reset', resetForm);
+const setAdFormReset = (onFormReset) => {
+  adForm.addEventListener('reset', onFormReset);
 };
 
 export { setAdFormSubmit, setAdFormReset, resetAdForm, adForm, addressInput };

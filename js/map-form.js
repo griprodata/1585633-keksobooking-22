@@ -10,6 +10,11 @@ const PRICE_MIDDLE = 'middle';
 const PRICE_HIGH = 'high';
 const DEFAULT_FILTER_VALUE = 'any';
 
+const Prices = {
+  MIN: 10000,
+  MAX: 50000,
+}
+
 const resetMapForm = () => {
   mapFiltersForm.reset();
 };
@@ -18,9 +23,9 @@ disableForm(mapFiltersForm, 'map__filters');
 
 const comparePrice = (offerPrice, mapPrice) => {
   return ((mapPrice === DEFAULT_FILTER_VALUE) ||
-    (offerPrice < 10000 && mapPrice === PRICE_LOW) ||
-    ((offerPrice >= 10000 && offerPrice < 50000) && mapPrice === PRICE_MIDDLE) ||
-    (offerPrice >= 50000 && mapPrice === PRICE_HIGH));
+    (offerPrice < Prices.MIN && mapPrice === PRICE_LOW) ||
+    ((offerPrice >= Prices.MIN && offerPrice < Prices.MAX) && mapPrice === PRICE_MIDDLE) ||
+    (offerPrice >= Prices.MAX && mapPrice === PRICE_HIGH));
 };
 
 const compareGuests = (offerGuests, mapGuests) => {
